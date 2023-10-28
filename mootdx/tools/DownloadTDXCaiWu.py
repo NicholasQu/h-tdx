@@ -185,7 +185,7 @@ class DownloadTDXCaiWu(object):
         to_update_cw_files = self.download_due_cw()
         if len(to_update_cw_files)==0:
             return
-        # self.download_cw_items(to_update_cw_files)
+        self.download_cw_items(to_update_cw_files)
 
         print(f"\n {datetime.now().strftime('%X')} - 4. 将正确的财务数据包复制到TDX主目录...**")
         to_copy_cw_files = self.copy_right_cw_to_tdx(to_update_cw_files)
@@ -197,5 +197,5 @@ class DownloadTDXCaiWu(object):
         else:
             print(f"\n\n######################################################### ")
             print(f" {datetime.now().strftime('%X')} - 下载的数据有异常！")
-            print(f" {datetime.now().strftime('%X')} - {to_update_cw_files-to_copy_cw_files}！")
+            print(f" {datetime.now().strftime('%X')} - {set(to_update_cw_files)-set(to_copy_cw_files)}！")
             print(f"#########################################################\n\n")
